@@ -1,0 +1,59 @@
+<!-- Version 1.2.0 Singular -->
+<div class='col' id='" + $("#monsterName").val() + "monster'>
+	<div class='card monster'>
+		<div class='card-body'>
+			<h5 class='card-title'>" + $("#monsterName").val() + "</h5>
+			<div class='input-group input-group-sm mb-3'>
+				<div class='input-group-prepend'>
+					<span class='input-group-text hpMonster' id='inputGroup-sizing-sm'>HP</span>
+				</div>
+				<input name='hpMonster' type='number' class='form-control hpMonster' min='0' aria-label='Small' aria-describedby='inputGroup-sizing-sm' value='" + $("#monsterHP").val() + "'>
+			</div>
+			<div class='input-group input-group-sm mb-3'>
+				<div class='input-group-prepend'>
+					<span class='input-group-text mpMonster' id='inputGroup-sizing-sm'>MP</span>
+				</div>
+				<input name='mpMonster' type='number' class='form-control mpMonster' min='0' aria-label='Small' aria-describedby='inputGroup-sizing-sm' value='" + $("#monsterMP").val() + "'>
+			</div>
+			<div class='input-group input-group-sm mb-3'>
+				<div class='input-group-prepend'>
+					<span class='input-group-text' id='inputGroup-sizing-sm'>Rolled Speed</span>
+				</div>
+				<input name='" + $("#monsterName").val() + "' type='number' min='0' class='form-control speed' aria-label='Small' aria-describedby='inputGroup-sizing-sm'>
+			</div>
+			<hr>
+			<button type='button' class='btn btn-danger btn-sm' id='deletebutton' value='" + $("#monsterName").val() + "monster'>Delete</button>
+			<button type='button' class='btn btn-warning btn-sm' id='faintbutton' value='" + $("#monsterName").val() + "monster'>Faint</button>
+		</div>
+	</div>
+</div>
+
+<!-- Version 1.2.0 Multiple -->
+<div class='col' id='" + $("#monsterName").val() + "_" + itemNo + "monster'>
+	<div class='card monster'>
+		<div class='card-body'>
+			<h5 class='card-title'>" + $("#monsterName").val() + " " + itemNo + "</h5>
+			<div class='input-group input-group-sm mb-3'>
+				<div class='input-group-prepend'>
+					<span class='input-group-text hpMonster' id='inputGroup-sizing-sm'>HP</span>
+				</div>
+				<input name='hpMonster' type='number' class='form-control hpMonster' min='0' aria-label='Small' aria-describedby='inputGroup-sizing-sm' value='" + $("#monsterHP").val() + "'>
+			</div>
+			<div class='input-group input-group-sm mb-3'>
+				<div class='input-group-prepend'>
+					<span class='input-group-text mpMonster' id='inputGroup-sizing-sm'>MP</span>
+				</div>
+				<input name='mpMonster' type='number' class='form-control mpMonster' min='0' aria-label='Small' aria-describedby='inputGroup-sizing-sm' value='" + $("#monsterMP").val() + "'>
+			</div>
+			<div class='input-group input-group-sm mb-3'>
+				<div class='input-group-prepend'>
+					<span class='input-group-text' id='inputGroup-sizing-sm'>Rolled Speed</span>
+				</div>
+				<input name='" + $("#monsterName").val() + "_" + itemNo + "' type='number' min='0' class='form-control speed' aria-label='Small' aria-describedby='inputGroup-sizing-sm'>
+			</div>
+			<hr>
+			<button type='button' class='btn btn-danger btn-sm' id='deletebutton' value='" + $("#monsterName").val() + "_" + itemNo + "monster'>Delete</button>
+			<button type='button' class='btn btn-warning btn-sm' id='faintbutton' value='" + $("#monsterName").val() + "_" + itemNo + "monster'>Faint</button>
+		</div>
+	</div>
+</div>

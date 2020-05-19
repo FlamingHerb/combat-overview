@@ -33,6 +33,7 @@
 		    background: #7386D5;
 		    color: #fff;
 		    transition: all 0.3s;
+		    height: 100vh;
 		}
 
 		#sidebar .sidebar-header {
@@ -99,15 +100,25 @@
 
 		.player {
 			width: 250px;
-			height: 150px;
+			height: 180px;
+		}
+
+		.monster {
+			width: 250px;
+			height: 260px;
 		}
 
 		.card-text {
 			font-size: 14px;
 		}
 
-		#enemySide, #playerSide{
-			min-height: 200px;
+		#playerSide{
+			min-height: 250px;
+			text-align: center;
+		}
+
+		#enemySide {
+			min-height: 250px;
 			text-align: center;
 		}
 
@@ -121,4 +132,22 @@
 		h1 {
 			color: white;
 			text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+		}
+
+		.dead {
+			background-color: #8B1A1A;
+		}
+
+		.speed {
+			text-align: center;
+		}
+
+		.mpMonster{
+			color: blue;
+			text-align: center;
+		}
+
+		.hpMonster {
+			color: green;
+			text-align: center;
 		}

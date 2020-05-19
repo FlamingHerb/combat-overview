@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Combat Overview 1.0.0</title>
+	<title>Combat Overview 1.2.0</title>
 	<meta charset="utf-8">
 	<meta name="description" content="A research program spearheaded by Center for Research in Science and Technology to document biodiversity in Eastern Visayas">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,6 +15,8 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>
 	
+	<!-- Modernizr -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha256-0rguYS0qgS6L4qVzANq4kjxPLtvnp5nn2nB5G1lWRv4=" crossorigin="anonymous"></script>
 
  	<!-- Font Awesome JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/solid.min.js" integrity="sha256-UM1HRu0Wd16k4L5wgrk17BYWzKkjZSe0BYr5T5qw2Ww=" crossorigin="anonymous"></script>
@@ -76,12 +78,49 @@
 			      </div>
 
 				      <div class="modal-body">
-				      
+				      <table>
+				      	<tr>
+				      		<td>
+				      			<div class="input-group-prepend">
+									<span class="input-group-text" id="inputGroup-sizing-sm">Monster Name</span>
+								</div>
+								
+				      		</td>
+				      		<td><input id="monsterName" name="monsterName" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></td>
+				      	</tr>
+				      	<tr>
+				      		<td>
+				      			<div class="input-group-prepend">
+									<span class="input-group-text" id="inputGroup-sizing-sm">Monster HP</span>
+								</div>
+								
+				      		</td>
+				      		<td><input id="monsterHP" name="monsterHP" type="number" min='1' class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="0"></td>
+				      	</tr>
+				      	<tr>
+				      		<td>
+				      			<div class="input-group-prepend">
+									<span class="input-group-text" id="inputGroup-sizing-sm">Monster MP</span>
+								</div>
+								
+				      		</td>
+				      		<td>
+				      			<input id="monsterMP" name="monsterMP" type="number" min='1' class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="0">
+				      		</td>
+				      	</tr>
+				      	<tr>
+				      		<td>
+				      			<div class="input-group-prepend">
+									<span class="input-group-text" id="inputGroup-sizing-sm">Number of Monsters</span>
+								</div>
+								
+				      		</td>
+				      		<td>
+				      			<input id="monsterNumber" name="monsterNumber" type="number" min='1' class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="1">
+				      		</td>
+				      	</tr>
+				      </table>
 				      	<div class="input-group input-group-sm mb-3">
-							<div class="input-group-prepend">
-								<span class="input-group-text" id="inputGroup-sizing-sm">Monster Name</span>
-							</div>
-							<input id="monsterName" name="monsterName" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
 						</div>
 				      
 				      </div>
@@ -104,12 +143,13 @@
 			<nav id="sidebar" class="">
 					<div class="sidebar-header">
 						<img src="files/logo.webp" class="img-thumbnail rounded mx-auto d-block" alt="..." style="background-color: #6d7fcc; border: none;">
-			            <h3>Combat Overview 1.0.0</h3>
+			            <h3>Combat Overview 1.2.0</h3>
 			        </div>
 
 			        <ul class="list-unstyled text-center">
 			            <p>Options</p>
 			            <hr>
+			            <!--
 			            <li>
 			            	<span data-toggle="tooltip" data-placement="right" title="Create a new player (Unavailable for now!).">
 			            		<button type="button" class="btn btn-info" >
@@ -125,6 +165,7 @@
 				            </span>
 			            </li>
 			            <hr>
+			        	-->
 			            <li>
 			            	<span data-toggle="tooltip" data-placement="right" title="Add existing player.">
 				                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addPCModal">
@@ -139,6 +180,7 @@
 				                </button>
 			            	</span>
 			            </li>
+			            <!--
 			            <hr>
 			            <li>
 			            	<span data-toggle="tooltip" data-placement="right" title="Edit existing player (Unavailable for now!).">
@@ -154,6 +196,7 @@
 				                </button>
 				            </span>
 			            </li>
+			        	-->
 			            <hr>
 			            <li>
 			            	<span data-toggle="tooltip" data-placement="right" title="Update turns.">
@@ -163,7 +206,9 @@
 				            </span>
 			            </li>
 			            <hr>
-
+			            <li>
+			            	<p>This is a program made by Vaccaria® to cater the needs of immediate combat preparation. While removing JSON function, it does allow for more fluid stuff.</p>
+			            </li>
 			        </ul>
 			</nav>
 
@@ -215,7 +260,7 @@
 			    	-->
 
 			    	<!-- So that it floats and stacks -->
-					<div class="row" id="playerSide">
+					<div class="row row-cols-5 justify-content-center" id="playerSide">
 			    	</div>
 			    </div>
 
@@ -228,7 +273,7 @@
 			    	-->
 			    	<h1 class="text-center">Enemy's Side</h1>
 
-			    	<div class="row" id="enemySide">
+			    	<div class="row row-cols-6 justify-content-center" id="enemySide">
 			    	</div>
 				</div>
 
@@ -247,8 +292,11 @@
 				</div>
 			</div>
 		</div>
+	</div>
 </body>
-	<script type="text/javascript">
+
+
+<script type="text/javascript">
 
 		// I don't know why I even added this function knowing that it doesn't matter anyway if the document gets loaded up.
 		$(document).ready(function () {
@@ -271,7 +319,7 @@
 			else {
 				$("#playerSide").append(
 
-			  	" <div class='col' id='" + $("#playerName").val() + "player'> <div class='card player'> <div class='card-body'> <h5 class='card-title'>" + $("#playerName").val() + "</h5><div class='input-group input-group-sm mb-3'> <div class='input-group-prepend'> <span class='input-group-text' id='inputGroup-sizing-sm'>Rolled Speed</span> </div> <input name='" + $("#playerName").val() + "' type='number' class='form-control speed' aria-label='Small' aria-describedby='inputGroup-sizing-sm'> </div> <button type='button' class='btn btn-danger btn-sm' id='deletebutton' value='" + $("#playerName").val() + "player'>Danger</button> </div> </div> </div>"
+			  	" <div class='col' id='" + $("#playerName").val() + "player'> <div class='card player'> <div class='card-body'> <h5 class='card-title'>" + $("#playerName").val() + "</h5><div class='input-group input-group-sm mb-3'> <div class='input-group-prepend'> <span class='input-group-text' id='inputGroup-sizing-sm'>Rolled Speed</span> </div> <input name='" + $("#playerName").val() + "' type='number' class='form-control speed' aria-label='Small' aria-describedby='inputGroup-sizing-sm'> </div><hr> <button type='button' class='btn btn-danger btn-sm' id='deletebutton' value='" + $("#playerName").val() + "player'>Delete</button> <button type='button' class='btn btn-warning btn-sm' id='faintbutton' value='" + $("#playerName").val() + "player'>Faint</button> </div> </div> </div>"
 			  	
 			  	);
 			  $("#playerName").val("");
@@ -282,17 +330,26 @@
 		// Ah yes, the saddest part. Making sure everything fits xd
 
 		// Add monsters
+		// 1.2.0 added iteratives
 		$("#submitMonster").click(function() {
 			if ($("#monsterName").val() == ""){
-				alert("You don't have a name for the monster!");
+				alert("Insufficient data!");
 			}
 			else {
-				 $("#enemySide").append(
-
-			  	" <div class='col' id='" + $("#monsterName").val() + "monster'> <div class='card player'> <div class='card-body'> <h5 class='card-title'>" + $("#monsterName").val() + "</h5> <div class='input-group input-group-sm mb-3'> <div class='input-group-prepend'> <span class='input-group-text' id='inputGroup-sizing-sm'>Rolled Speed</span> </div> <input name='" + $("#monsterName").val() + "' type='number' class='form-control speed' aria-label='Small' aria-describedby='inputGroup-sizing-sm'> </div> <button type='button' class='btn btn-danger btn-sm' id='deletebutton' value='" + $("#monsterName").val() + "monster'>Danger</button> </div> </div> </div>"
-			  	
-			  	);
+				var iterater = $("#monsterNumber").val(); // Iterator
+				if (iterater != 1) {
+					for (var itemNo = 1; itemNo <= iterater; itemNo++) {
+						$("#enemySide").append("<div class='col' id='" + $("#monsterName").val() + "_" + itemNo + "monster'><div class='card monster'><div class='card-body'><h5 class='card-title'>" + $("#monsterName").val() + " " + itemNo + "</h5><div class='input-group input-group-sm mb-3'><div class='input-group-prepend'><span class='input-group-text hpMonster' id='inputGroup-sizing-sm'>HP</span></div><input name='hpMonster' type='number' class='form-control hpMonster' min='0' aria-label='Small' aria-describedby='inputGroup-sizing-sm' value='" + $("#monsterHP").val() + "'></div><div class='input-group input-group-sm mb-3'><div class='input-group-prepend'><span class='input-group-text mpMonster' id='inputGroup-sizing-sm'>MP</span></div><input name='mpMonster' type='number' class='form-control mpMonster' min='0' aria-label='Small' aria-describedby='inputGroup-sizing-sm' value='" + $("#monsterMP").val() + "'></div><div class='input-group input-group-sm mb-3'><div class='input-group-prepend'><span class='input-group-text' id='inputGroup-sizing-sm'>Rolled Speed</span></div><input name='" + $("#monsterName").val() + "_" + itemNo + "' type='number' min='0' class='form-control speed' aria-label='Small' aria-describedby='inputGroup-sizing-sm'></div><hr><button type='button' class='btn btn-danger btn-sm' id='deletebutton' value='" + $("#monsterName").val() + "_" + itemNo + "monster'>Delete</button><button type='button' class='btn btn-warning btn-sm' id='faintbutton' value='" + $("#monsterName").val() + "_" + itemNo + "monster'>Faint</button></div></div></div>");
+					}
+				}
+				else {
+					$("#enemySide").append("<div class='col' id='" + $("#monsterName").val() + "monster'><div class='card monster'><div class='card-body'><h5 class='card-title'>" + $("#monsterName").val() + "</h5><div class='input-group input-group-sm mb-3'><div class='input-group-prepend'><span class='input-group-text hpMonster' id='inputGroup-sizing-sm'>HP</span></div><input name='hpMonster' type='number' class='form-control hpMonster' min='0' aria-label='Small' aria-describedby='inputGroup-sizing-sm' value='" + $("#monsterHP").val() + "'></div><div class='input-group input-group-sm mb-3'><div class='input-group-prepend'><span class='input-group-text mpMonster' id='inputGroup-sizing-sm'>MP</span></div><input name='mpMonster' type='number' class='form-control mpMonster' min='0' aria-label='Small' aria-describedby='inputGroup-sizing-sm' value='" + $("#monsterMP").val() + "'></div><div class='input-group input-group-sm mb-3'><div class='input-group-prepend'><span class='input-group-text' id='inputGroup-sizing-sm'>Rolled Speed</span></div><input name='" + $("#monsterName").val() + "' type='number' min='0' class='form-control speed' aria-label='Small' aria-describedby='inputGroup-sizing-sm'></div><hr><button type='button' class='btn btn-danger btn-sm' id='deletebutton' value='" + $("#monsterName").val() + "monster'>Delete</button><button type='button' class='btn btn-warning btn-sm' id='faintbutton' value='" + $("#monsterName").val() + "monster'>Faint</button></div></div></div>");
+				}
+			  // Deinitializes the values for new input.
 			  $("#monsterName").val("");
+			  $("#monsterHP").val("0");
+			  $("#monsterMP").val("0");
+			  $("#monsterNumber").val("1");
 			}
 		 
 		});
@@ -305,6 +362,16 @@
 			$(text).remove();
 		});
 
+		// Faint buttons
+		$('body').on( "click", "#faintbutton" , function() {
+			var text = "#" + $(this).val();
+			console.log(text)
+			$(text).children('.card').toggleClass('dead');
+			$(text).find('.speed').toggleClass('dead'); // Puts a... dead class on the input? Because for updating speeds? Yeah, I know.
+
+		});
+
+
 		// Update turns
 		$("#updateTurns").click(function() {
 			var turn = "";
@@ -314,10 +381,16 @@
 			var iteration = 0;
 
 			$(".speed").each(function() {
+
+				// The reason that this checks whether the input has a .dead class is because I made the .speed each function first. Too bad!
+				if ($(this).hasClass('dead') || $(this).val() == "") {
+					return;
+				}
 				charaName = $(this).attr('name');
 				charaSpeed = $(this).val();
 				array[iteration] = new Array(charaName, charaSpeed);
 				iteration++;
+				console.log($(this).parents());
 			});
 
 			array.sort(function(a,b){
@@ -335,11 +408,11 @@
 			turn = turn.slice(0, -3);
 
 			if (array.length == 0) {
-				turn = "Add some PCs and monsters to get started!"
+				turn = "Add some PCs and monsters to get started! Make sure you actually added speeds as well!"
 			}
 
 			$("#turnShower").text(turn);
 		});
+</script>
 
-	</script>
 </html>
