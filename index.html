@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Combat Overview 1.0.0</title>
+	<meta charset="utf-8">
+	<meta name="description" content="A research program spearheaded by Center for Research in Science and Technology to document biodiversity in Eastern Visayas">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="favicon.ico" type="image/ico">
+	 <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+	<!-- Scripts -->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>
+	
+
+ 	<!-- Font Awesome JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/solid.min.js" integrity="sha256-UM1HRu0Wd16k4L5wgrk17BYWzKkjZSe0BYr5T5qw2Ww=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js" integrity="sha256-NP9NujdEzS5m4ZxvNqkcbxyHB0dTRy9hG13RwTVBGwo=" crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row flex-xl-nowrap">
+
+			<!--
+
+			MODALS
+
+			-->
+
+			<!-- Add Player Modal -->
+			<div class="modal fade" id="addPCModal" tabindex="-1" role="dialog" aria-labelledby="addPCModalLabel" aria-hidden="true">
+			  <div class="modal-dialog modal-dialog-centered" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">Add PC</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+
+				      <div class="modal-body">
+
+				      	<div class="input-group input-group-sm mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="inputGroup-sizing-sm">Player Name</span>
+							</div>
+							<input id="playerName" name="playerName" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+						</div>
+				      </div>
+
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				        <button type="button" id="submitPlayer" name="submitPlayer" class="btn btn-primary" data-dismiss="modal">Add PC now</button>
+				      </div>
+
+			    </div>
+			  </div>
+			</div>
+
+			<!-- Add Monster Modal -->
+			<div class="modal fade" id="addMonsterModal" tabindex="-1" role="dialog" aria-labelledby="addMonsterModalLabel" aria-hidden="true">
+			  <div class="modal-dialog modal-dialog-centered" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">Add monster</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+
+				      <div class="modal-body">
+				      
+				      	<div class="input-group input-group-sm mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="inputGroup-sizing-sm">Monster Name</span>
+							</div>
+							<input id="monsterName" name="monsterName" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+						</div>
+				      
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				        <button type="button" id="submitMonster" name="submitMonster" class="btn btn-primary" data-dismiss="modal">Add monster now</button>
+				      </div>
+
+			    </div>
+			  </div>
+			</div>
+
+
+			<!--
+
+			SIDEBAR
+
+			-->
+
+			<nav id="sidebar" class="">
+					<div class="sidebar-header">
+						<img src="files/logo.webp" class="img-thumbnail rounded mx-auto d-block" alt="..." style="background-color: #6d7fcc; border: none;">
+			            <h3>Combat Overview 1.0.0</h3>
+			        </div>
+
+			        <ul class="list-unstyled text-center">
+			            <p>Options</p>
+			            <hr>
+			            <li>
+			            	<span data-toggle="tooltip" data-placement="right" title="Create a new player (Unavailable for now!).">
+			            		<button type="button" class="btn btn-info" >
+				                	New PC
+				                </button>
+			            	</span>
+			            </li>
+			            <li>
+			            	<span data-toggle="tooltip" data-placement="right" title="Create a new monster (Unavailable for now!).">
+				                <button type="button" class="btn btn-info" >
+				                	New Monster
+				                </button>
+				            </span>
+			            </li>
+			            <hr>
+			            <li>
+			            	<span data-toggle="tooltip" data-placement="right" title="Add existing player.">
+				                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addPCModal">
+				                	Add PC
+				                </button>
+			            	</span>
+			            </li>
+			            <li>
+			            	<span data-toggle="tooltip" data-placement="right" title="Add existing monster.">
+				                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addMonsterModal">
+				                	Add Monster
+				                </button>
+			            	</span>
+			            </li>
+			            <hr>
+			            <li>
+			            	<span data-toggle="tooltip" data-placement="right" title="Edit existing player (Unavailable for now!).">
+				                <button type="button" class="btn btn-info">
+				                	Edit PC
+				                </button>
+			            	</span>
+			            </li>
+			            <li>
+			            	<span data-toggle="tooltip" data-placement="right" title="Edit existing monster (Unavailable for now!).">
+				                <button type="button" class="btn btn-info">
+				                	Edit Monster
+				                </button>
+				            </span>
+			            </li>
+			            <hr>
+			            <li>
+			            	<span data-toggle="tooltip" data-placement="right" title="Update turns.">
+				                <button type="button" class="btn btn-info" id="updateTurns">
+				                	Update Turn
+				                </button>
+				            </span>
+			            </li>
+			            <hr>
+
+			        </ul>
+			</nav>
+
+			<!--
+
+			CARDS
+			
+			-->
+
+			<div id="content">
+			    <nav class="navbar navbar-expand-lg navbar-light">
+			        <div class="container-fluid">
+
+			            <button type="button" id="sidebarCollapse" class="btn btn-info">
+			                <i class="fas fa-align-left"></i>
+			                <span>Toggle Sidebar</span>
+			            </button>
+
+			        </div>
+			    </nav>
+
+			    <div class="container-fluid">
+
+			    	<!--
+
+					Show's the players side cards (speed only for nwo)
+
+			    	-->
+			    	<h1 class="text-center">Player's Side</h1>
+
+
+			    	<!--
+
+						<div class="col">
+							<div class="card player">
+							  <div class="card-body">
+							    <h5 class="card-title">Player</h5>
+							    <p class="card-text">Base Speed: 7</p>
+							    <div class="input-group input-group-sm mb-3">
+								  <div class="input-group-prepend">
+								    <span class="input-group-text" id="inputGroup-sizing-sm">Rolled Speed</span>
+								  </div>
+								  <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+								</div>
+							  </div>
+							</div>
+						</div>
+
+			    	-->
+
+			    	<!-- So that it floats and stacks -->
+					<div class="row" id="playerSide">
+			    	</div>
+			    </div>
+
+			    <div class="container-fluid">
+
+			    	<!--
+
+					Show's the monsters side.
+
+			    	-->
+			    	<h1 class="text-center">Enemy's Side</h1>
+
+			    	<div class="row" id="enemySide">
+			    	</div>
+				</div>
+
+				<div class="container-fluid">
+
+			    	<!--
+
+					Show's the monsters side.
+
+			    	-->
+			    	<h1 class="text-center">Turns</h1>
+
+			    	<p id="turnShower" class="align-middle">
+
+			    	</p>
+				</div>
+			</div>
+		</div>
+</body>
+	<script type="text/javascript">
+
+		// I don't know why I even added this function knowing that it doesn't matter anyway if the document gets loaded up.
+		$(document).ready(function () {
+
+		    $('#sidebarCollapse').on('click', function () {
+		        $('#sidebar').toggleClass('active');
+		    });
+		});
+
+		// This is to make sure that tooltips work! Too bad!
+		$(function () {
+		  $('[data-toggle="tooltip"]').tooltip()
+		});
+
+		// Add players
+		$("#submitPlayer").click(function() {
+			if ($("#playerName").val() == ""){
+				alert("You don't have a name for the player!");
+			}
+			else {
+				$("#playerSide").append(
+
+			  	" <div class='col' id='" + $("#playerName").val() + "player'> <div class='card player'> <div class='card-body'> <h5 class='card-title'>" + $("#playerName").val() + "</h5><div class='input-group input-group-sm mb-3'> <div class='input-group-prepend'> <span class='input-group-text' id='inputGroup-sizing-sm'>Rolled Speed</span> </div> <input name='" + $("#playerName").val() + "' type='number' class='form-control speed' aria-label='Small' aria-describedby='inputGroup-sizing-sm'> </div> <button type='button' class='btn btn-danger btn-sm' id='deletebutton' value='" + $("#playerName").val() + "player'>Danger</button> </div> </div> </div>"
+			  	
+			  	);
+			  $("#playerName").val("");
+			}
+		  
+		});
+
+		// Ah yes, the saddest part. Making sure everything fits xd
+
+		// Add monsters
+		$("#submitMonster").click(function() {
+			if ($("#monsterName").val() == ""){
+				alert("You don't have a name for the monster!");
+			}
+			else {
+				 $("#enemySide").append(
+
+			  	" <div class='col' id='" + $("#monsterName").val() + "monster'> <div class='card player'> <div class='card-body'> <h5 class='card-title'>" + $("#monsterName").val() + "</h5> <div class='input-group input-group-sm mb-3'> <div class='input-group-prepend'> <span class='input-group-text' id='inputGroup-sizing-sm'>Rolled Speed</span> </div> <input name='" + $("#monsterName").val() + "' type='number' class='form-control speed' aria-label='Small' aria-describedby='inputGroup-sizing-sm'> </div> <button type='button' class='btn btn-danger btn-sm' id='deletebutton' value='" + $("#monsterName").val() + "monster'>Danger</button> </div> </div> </div>"
+			  	
+			  	);
+			  $("#monsterName").val("");
+			}
+		 
+		});
+
+
+		// Delete buttons
+		$('body').on( "click", "#deletebutton" , function() {
+			var text = "#" + $(this).val();
+			console.log(text);
+			$(text).remove();
+		});
+
+		// Update turns
+		$("#updateTurns").click(function() {
+			var turn = "";
+			var array = new Array();
+			var charaName = "";
+			var charaSpeed = 0;
+			var iteration = 0;
+
+			$(".speed").each(function() {
+				charaName = $(this).attr('name');
+				charaSpeed = $(this).val();
+				array[iteration] = new Array(charaName, charaSpeed);
+				iteration++;
+			});
+
+			array.sort(function(a,b){
+			    return b[1] - a[1];
+			});
+
+			console.log(JSON.stringify(array));
+
+			var arrayLength = array.length;
+			for (var i = 0; i < arrayLength; i++) {
+			    turn += array[i][0] + " - ";
+			    //Do something
+			}
+
+			turn = turn.slice(0, -3);
+
+			if (array.length == 0) {
+				turn = "Add some PCs and monsters to get started!"
+			}
+
+			$("#turnShower").text(turn);
+		});
+
+	</script>
+</html>
