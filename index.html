@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Combat Overview 1.3.0</title>
+	<title>Combat Overview 1.3.1</title>
 	<meta charset="utf-8">
 	<meta name="description" content="A research program spearheaded by Center for Research in Science and Technology to document biodiversity in Eastern Visayas">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -154,7 +154,7 @@
 			<nav id="sidebar" class="">
 					<div class="sidebar-header">
 						<img src="files/logo.webp" class="img-thumbnail rounded mx-auto d-block" alt="..." style="background-color: #6d7fcc; border: none;">
-			            <h3>Combat Overview 1.3.0</h3>
+			            <h3>Combat Overview 1.3.1</h3>
 			        </div>
 
 			        <ul class="list-unstyled text-center">
@@ -341,20 +341,22 @@
 		// Ah yes, the saddest part. Making sure everything fits xd
 
 		// Add monsters
-		// 1.3.0 added iteratives
+		// 1.3.1 added iteratives
 		$("#submitMonster").click(function() {
 			if ($("#monsterName").val() == ""){
 				alert("Insufficient data!");
 			}
 			else {
+				var monstername = $("#monsterName").val().replace(/ /g,"_");
+				console.log(monstername);
 				var startingNumber = $("#monsterStartNumber").val(); // Starting Number
 				if (parseInt($("#monsterNumber").val()) == 1) { // Checks if number of monsters are equal to 1
-					$("#enemySide").append("<div class='col' id='" + $("#monsterName").val() + "_" + startingNumber + "monster'><div class='card monster'><div class='card-body'><h5 class='card-title'>" + $("#monsterName").val() + " " + startingNumber + "</h5><div class='input-group input-group-sm mb-3'><div class='input-group-prepend'><span class='input-group-text hpMonster' id='inputGroup-sizing-sm'>HP</span></div><input name='hpMonster' type='number' class='form-control hpMonster' min='0' aria-label='Small' aria-describedby='inputGroup-sizing-sm' value='" + $("#monsterHP").val() + "_" + startingNumber + "'></div><div class='input-group input-group-sm mb-3'><div class='input-group-prepend'><span class='input-group-text mpMonster' id='inputGroup-sizing-sm'>MP</span></div><input name='mpMonster' type='number' class='form-control mpMonster' min='0' aria-label='Small' aria-describedby='inputGroup-sizing-sm' value='" + $("#monsterMP").val() + "_" + startingNumber + "'></div><div class='input-group input-group-sm mb-3'><div class='input-group-prepend'><span class='input-group-text' id='inputGroup-sizing-sm'>Rolled Speed</span></div><input name='" + $("#monsterName").val() + "_" + startingNumber + "' type='number' min='0' class='form-control speed' aria-label='Small' aria-describedby='inputGroup-sizing-sm'></div><hr><button type='button' class='btn btn-danger btn-sm' id='deletebutton' value='" + $("#monsterName").val() + "_" + startingNumber + "monster'>Delete</button><button type='button' class='btn btn-warning btn-sm' id='faintbutton' value='" + $("#monsterName").val() + "_" + startingNumber + "monster'>Faint</button></div></div></div>");
+					$("#enemySide").append("<div class='col' id='" + monstername + "_" + startingNumber + "monster'><div class='card monster'><div class='card-body'><h5 class='card-title'>" + $("#monsterName").val() + " " + startingNumber + "</h5><div class='input-group input-group-sm mb-3'><div class='input-group-prepend'><span class='input-group-text hpMonster' id='inputGroup-sizing-sm'>HP</span></div><input name='hpMonster' type='number' class='form-control hpMonster' min='0' aria-label='Small' aria-describedby='inputGroup-sizing-sm' value='" + $("#monsterHP").val() + "_" + startingNumber + "'></div><div class='input-group input-group-sm mb-3'><div class='input-group-prepend'><span class='input-group-text mpMonster' id='inputGroup-sizing-sm'>MP</span></div><input name='mpMonster' type='number' class='form-control mpMonster' min='0' aria-label='Small' aria-describedby='inputGroup-sizing-sm' value='" + $("#monsterMP").val() + "_" + startingNumber + "'></div><div class='input-group input-group-sm mb-3'><div class='input-group-prepend'><span class='input-group-text' id='inputGroup-sizing-sm'>Rolled Speed</span></div><input name='" + monstername + "_" + startingNumber + "' type='number' min='0' class='form-control speed' aria-label='Small' aria-describedby='inputGroup-sizing-sm'></div><hr><button type='button' class='btn btn-danger btn-sm' id='deletebutton' value='" + monstername + "_" + startingNumber + "monster'>Delete</button><button type='button' class='btn btn-warning btn-sm' id='faintbutton' value='" + monstername + "_" + startingNumber + "monster'>Faint</button></div></div></div>");
 				}
 				else {
 					var iterater = parseInt($("#monsterNumber").val()) + parseInt($("#monsterStartNumber").val()); // Iterator
 					for (var itemNo = startingNumber; itemNo < iterater; itemNo++) {
-						$("#enemySide").append("<div class='col' id='" + $("#monsterName").val() + "_" + itemNo + "monster'><div class='card monster'><div class='card-body'><h5 class='card-title'>" + $("#monsterName").val() + " " + itemNo + "</h5><div class='input-group input-group-sm mb-3'><div class='input-group-prepend'><span class='input-group-text hpMonster' id='inputGroup-sizing-sm'>HP</span></div><input name='hpMonster' type='number' class='form-control hpMonster' min='0' aria-label='Small' aria-describedby='inputGroup-sizing-sm' value='" + $("#monsterHP").val() + "'></div><div class='input-group input-group-sm mb-3'><div class='input-group-prepend'><span class='input-group-text mpMonster' id='inputGroup-sizing-sm'>MP</span></div><input name='mpMonster' type='number' class='form-control mpMonster' min='0' aria-label='Small' aria-describedby='inputGroup-sizing-sm' value='" + $("#monsterMP").val() + "'></div><div class='input-group input-group-sm mb-3'><div class='input-group-prepend'><span class='input-group-text' id='inputGroup-sizing-sm'>Rolled Speed</span></div><input name='" + $("#monsterName").val() + "_" + itemNo + "' type='number' min='0' class='form-control speed' aria-label='Small' aria-describedby='inputGroup-sizing-sm'></div><hr><button type='button' class='btn btn-danger btn-sm' id='deletebutton' value='" + $("#monsterName").val() + "_" + itemNo + "monster'>Delete</button><button type='button' class='btn btn-warning btn-sm' id='faintbutton' value='" + $("#monsterName").val() + "_" + itemNo + "monster'>Faint</button></div></div></div>");
+						$("#enemySide").append("<div class='col' id='" + monstername + "_" + itemNo + "monster'><div class='card monster'><div class='card-body'><h5 class='card-title'>" + $("#monsterName").val() + " " + itemNo + "</h5><div class='input-group input-group-sm mb-3'><div class='input-group-prepend'><span class='input-group-text hpMonster' id='inputGroup-sizing-sm'>HP</span></div><input name='hpMonster' type='number' class='form-control hpMonster' min='0' aria-label='Small' aria-describedby='inputGroup-sizing-sm' value='" + $("#monsterHP").val() + "'></div><div class='input-group input-group-sm mb-3'><div class='input-group-prepend'><span class='input-group-text mpMonster' id='inputGroup-sizing-sm'>MP</span></div><input name='mpMonster' type='number' class='form-control mpMonster' min='0' aria-label='Small' aria-describedby='inputGroup-sizing-sm' value='" + $("#monsterMP").val() + "'></div><div class='input-group input-group-sm mb-3'><div class='input-group-prepend'><span class='input-group-text' id='inputGroup-sizing-sm'>Rolled Speed</span></div><input name='" + monstername + "_" + itemNo + "' type='number' min='0' class='form-control speed' aria-label='Small' aria-describedby='inputGroup-sizing-sm'></div><hr><button type='button' class='btn btn-danger btn-sm' id='deletebutton' value='" + monstername + "_" + itemNo + "monster'>Delete</button><button type='button' class='btn btn-warning btn-sm' id='faintbutton' value='" + monstername + "_" + itemNo + "monster'>Faint</button></div></div></div>");
 					}	
 				}
 				

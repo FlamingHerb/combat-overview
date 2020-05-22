@@ -37,3 +37,7 @@ Version 1.2.0
 
 Version 1.3.0
 -	Reinforcements added!
+	
+	Version 1.3.1
+	-	Added a fix where monsters with spaces cannot faint
+
